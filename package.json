@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.6.4",
+    "@types/node": "^18.15.7",
+    "autoprefixer": "^10.4.14",
+    "nuxt": "^3.3.1",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-brands-svg-icons": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/vue-fontawesome": "^3.0.3",
+    "nuxt-fontawesome": "^0.4.0",
+    "nuxt-video-player": "^1.0.17",
+    "swiper": "^9.1.1",
+    "video.js": "^8.0.4",
+    "videojs-youtube": "^3.0.0",
+    "vue-youtube": "^1.4.0"
+  }
+}
