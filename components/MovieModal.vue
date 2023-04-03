@@ -22,7 +22,7 @@
           >&#8203;</span
         >
         <div
-          class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-1/2 w-11/12 mx-auto"
+          class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl w-11/12 mx-auto"
         >
           <div class="bg-[#181717] text-white pb-6" id="main-modal">
             <div v-if="movie" class="relative">
@@ -41,7 +41,7 @@
                     </button>
                   </div>
                 </div>
-                <div class="absolute bottom-4 px-4 z-40">
+                <div class="absolute bottom-4 px-4 z-40" v-if="seeMovie">
                   <div class="flex">
                     <div>
                       <button
@@ -49,14 +49,14 @@
                         @click="playMovie(movie.id)"
                       >
                         <font-awesome-icon icon="fas fa-play" class="text-lg" />
-                        Play
+                        Watch Movie
                       </button>
                     </div>
                   </div>
                 </div>
                 <img
                   :src="`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`"
-                  class="h-[400px] object-cover w-full"
+                  class="md:h-[400px] h-[250px] object-cover w-full"
                 />
                 <!-- <video-player
                   source-type="youtube"
@@ -67,7 +67,7 @@
                 <iframe
                   width="560"
                   height="315"
-                  class="h-[400px] absolute w-full top-0 z-30"
+                  class="md:h-[400px] h-[250px] absolute w-full top-0 z-30"
                   :src="`https://www.youtube.com/embed/${videoId}`"
                   title="YouTube video player"
                   frameborder="0"
@@ -80,11 +80,11 @@
                   <span class="text-[#2ea14e]">82% Match </span>
                   {{ movie.release_date }}
                 </p>
-                <div class="flex gap-6">
-                  <div class="w-9/12">
+                <div class="flex gap-6 flex-col md:flex-row">
+                  <div class="md:w-9/12 w-full">
                     <p>{{ movie.overview }}</p>
                   </div>
-                  <div class="w-3/12">
+                  <div class="md:w-3/12 w-full">
                     <p><span>Genres:</span> {{ movie.vote_count }}</p>
                     <p>
                       <span>Original Language:</span>
@@ -114,6 +114,7 @@ export default {
   data() {
     return {
       videoId: "",
+      seeMovie: true
     };
   },
   props: {
@@ -129,6 +130,7 @@ export default {
 
   methods: {
     async playMovie(movieId) {
+      this.seeMovie = false;
       const { data } = await useFetch(
         `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=f8326fccbf77b2dfd260e79a021b5e8f&language=en-US`
       );
@@ -154,6 +156,7 @@ export default {
       $event.stopPropagation();
       emit("close-modal");
       this.videoId = ""
+      this.seeMovie = true
     };
     return {
       closeModal,

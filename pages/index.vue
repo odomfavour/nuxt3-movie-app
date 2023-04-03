@@ -20,7 +20,7 @@
                   {{ title }}
                 </h1>
                 <p
-                  class="max-w-x5 text-shadow-md text-xs md:max-w-lg md:text-lg lg:max-w-2xl lg:text-xl"
+                  class="max-w-x5 text-shadow-md text-lg md:max-w-lg md:text-lg lg:max-w-2xl lg:text-xl"
                   v-if="overview"
                 >
                   {{ overview }}
